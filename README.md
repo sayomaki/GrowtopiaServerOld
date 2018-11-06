@@ -13,8 +13,8 @@ Original code can be found [here](https://github.com/GrowtopiaNoobs/GrowtopiaSer
 
 ### Linux
 1. Make sure you have the build tools ready for installation. You can download them depending on your distribution.
-  For Ubuntu or Debian-based distributions, simply open a terminal window and type in the command (`$ sudo apt-get install build-essential`)
-  Other distributions, please refer to your package manager and install the one containing g++ and gcc
+  * For Ubuntu or Debian-based distributions, simply open a terminal window and type in the command (`$ sudo apt-get install build-essential`)
+  * Other distributions, please refer to your package manager and install the one containing g++ and gcc
 2. Clone or download this project and open a terminal window in that folder.
 3. Run this command to build the server executable (`$ g++ -o server server.cpp -std=c++11 -lenet`)
 4. Now you have your working executable, follow instructions from the [wiki here](https://github.com/GrowtopiaNoobs/GrowtopiaServer/wiki/Basic-setup) to setup your server
