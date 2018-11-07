@@ -32,6 +32,8 @@
 
 #ifdef _WIN32
 #include <windows.h>
+typedef __int8 __int8_t;
+typedef __int16 __int16_t;
 #elif __APPLE__ || __linux__
 typedef unsigned int DWORD;
 #endif
