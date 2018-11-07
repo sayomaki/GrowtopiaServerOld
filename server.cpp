@@ -27,6 +27,13 @@
 #include <fstream>
 #include "json.hpp"
 
+#include "bcrypt.h"
+#include "bcrypt.c"
+#include "crypt_blowfish/crypt_gensalt.c"
+#include "crypt_blowfish/crypt_blowfish.h"
+#include "crypt_blowfish/crypt_blowfish.c"
+#include "crypt_blowfish/wrapper.c"
+
 using namespace std;
 using json = nlohmann::json;
 
@@ -44,17 +51,21 @@ int itemsDatSize = 0;
 /***password validation***/
 
 bool verifyPassword(string password, string hash) {
-	if (password == hash) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	int ret;
+	ret = bcrypt_checkpw(password.c_str(), hash.c_str());
+	return !ret;
 }
 
 string hashPassword(string password) {
-	// Plaintext password since issue with crypto library
-	return password;
+	char salt[BCRYPT_HASHSIZE];
+	char hash[BCRYPT_HASHSIZE];
+	int ret;
+
+	ret = bcrypt_gensalt(12, salt);
+	assert(ret == 0);
+	ret = bcrypt_hashpw(password.c_str(), salt, hash);
+	assert(ret == 0);
+	return hash;
 }
 
 /***bcrypt**/
