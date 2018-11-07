@@ -1,11 +1,11 @@
-/** 
+/**
  @file  protocol.h
  @brief ENet protocol
 */
 #ifndef __ENET_PROTOCOL_H__
 #define __ENET_PROTOCOL_H__
 
-#include "enet/types.h"
+#include "types.h"
 
 enum
 {
@@ -195,4 +195,3 @@ typedef union _ENetProtocol
 #endif
 
 #endif /* __ENET_PROTOCOL_H__ */
-
