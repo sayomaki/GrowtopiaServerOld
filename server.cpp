@@ -18,6 +18,7 @@
 
 
 #include <iostream>
+#include <csignal>
 
 #include "enet/enet.h"
 #include <string>
@@ -1986,6 +1987,10 @@ void SendPacketRaw(int a1, void *packetData, size_t packetDataSize, void *a4, EN
 	// 	saveAllWorlds();
 	// 	return FALSE;
 	// }
+void onExit (int signum) {
+	saveAllWorlds();
+	exit(signum);
+}
 
 	/*
 	action|log
@@ -2002,6 +2007,8 @@ int main(int argc, char* argv[])
 	if (atexit(saveAllWorlds)) {
 		cout << "Worlds won't be saved for this session..." << endl;
 	}
+
+	signal (SIGINT, onExit);
 	/*if (RegisterApplicationRestart(L" -restarted", 0) == S_OK)
 	{
 		cout << "Autorestart is ready" << endl;
