@@ -51,15 +51,14 @@ int itemsDatSize = 0;
 
 /***password validation***/
 
-
-
-bool verifyPassword(string password, string hash) {
-	int ret = hash_comp_const(password.c_str(), hash.c_str());
-	return !ret;
-}
-
 string hashPassword(string password) {
 	return hash_sha256(password);
+}
+
+bool verifyPassword(string password, string hash) {
+	string hashed = hashPassword(password);
+	int ret = hash_comp_const(hashed.c_str(), hash.c_str());
+	return !ret;
 }
 
 /***bcrypt**/
