@@ -28,18 +28,18 @@
 #include <fstream>
 #include "json.hpp"
 
-#include "bcrypt.h"
-#include "bcrypt.c"
-#include "crypt_blowfish/crypt_gensalt.c"
-#include "crypt_blowfish/crypt_blowfish.h"
-#include "crypt_blowfish/crypt_blowfish.c"
-#include "crypt_blowfish/wrapper.c"
+#include "sha256.h"
+
+#ifdef _WIN32
+#include <windows.h>
+#elif __APPLE__ || __linux__
+typedef unsigned int DWORD;
+#endif
 
 using namespace std;
 using json = nlohmann::json;
 
 typedef unsigned char BYTE;
-typedef unsigned int DWORD;
 
 //#define TOTAL_LOG
 #define REGISTRATION
@@ -51,22 +51,15 @@ int itemsDatSize = 0;
 
 /***password validation***/
 
+
+
 bool verifyPassword(string password, string hash) {
-	int ret;
-	ret = bcrypt_checkpw(password.c_str(), hash.c_str());
+	int ret = hash_comp_const(password.c_str(), hash.c_str());
 	return !ret;
 }
 
 string hashPassword(string password) {
-	char salt[BCRYPT_HASHSIZE];
-	char hash[BCRYPT_HASHSIZE];
-	int ret;
-
-	ret = bcrypt_gensalt(12, salt);
-	assert(ret == 0);
-	ret = bcrypt_hashpw(password.c_str(), salt, hash);
-	assert(ret == 0);
-	return hash;
+	return hash_sha256(password);
 }
 
 /***bcrypt**/
