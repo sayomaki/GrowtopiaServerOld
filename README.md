@@ -4,7 +4,7 @@ Forked and edited to support other compilers and platforms.
 
 Original code can be found [here](https://github.com/GrowtopiaNoobs/GrowtopiaServer)
 
-**NOTE: This version uses SHA256 for hashing password, and thus player files (those in the player folder) will NOT be usable with this version of the server. Please remove them and recreate your GrowID**
+**NOTE: This version uses SHA256 for hashing password, and thus player files (those in the player folder) from GrowtopiaNoob's version will NOT be usable with this version of the server. Please remove them and recreate your GrowID**
 
 ## Download
 1. Head over to the [Releases](https://github.com/willi123yao/GrowtopiaServer/releases) to obtain the server executable according to your OS.
