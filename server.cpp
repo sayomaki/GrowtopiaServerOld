@@ -2325,7 +2325,7 @@ int main(int argc, char* argv[])
 								if (infoDat[0] == "username") username = infoDat[1];
 								if (infoDat[0] == "password") password = infoDat[1];
 								if (infoDat[0] == "passwordverify") passwordverify = infoDat[1];
-								if (infoDat[0] == "email") email = email[1];
+								if (infoDat[0] == "email") email = infoDat[1];
 								if (infoDat[0] == "discord") discord = infoDat[1];
 							}
 						}
