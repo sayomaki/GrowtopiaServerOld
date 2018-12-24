@@ -2496,6 +2496,17 @@ int main(int argc, char* argv[])
 							}
 						}
 					}
+					else if (str.substr(0, 5) == "/gem ") //gem if u want flex with ur gems!
+					{
+						GamePacket p = packetEnd(appendInt(appendString(createPacket(), "OnSetBux"), atoi(str.substr(5).c_str())));
+						ENetPacket * packet = enet_packet_create(p.data,
+							p.len,
+							ENET_PACKET_FLAG_RELIABLE);
+
+						enet_peer_send(peer, 0, packet);
+						delete p.data;
+						continue;
+					}
 					else if (str == "/count"){
 						int count = 0;
 						ENetPeer * currentPeer;
