@@ -463,7 +463,7 @@ struct PlayerInfo {
 	bool haveSuperSupporterName = false; // 16777216
 	bool haveSupperPineapple = false; // 33554432
 	//bool
-	int skinColor = 0x268DAFFF;
+	int skinColor = 0x8295C3FF; //normal SKin color like gt!
 
 	PlayerInventory inventory;
 
@@ -531,7 +531,7 @@ WorldInfo generateWorld(string name, int width, int height)
 		if (i == 3650)
 			world.items[i].foreground = 6;
 		else if (i >= 3600 && i<3700)
-			world.items[i].foreground = 16;
+			world.items[i].foreground = 0; //fixed the grass in the world!
 		if (i == 3750)
 			world.items[i].foreground = 8;
 	}
@@ -2450,7 +2450,7 @@ int main(int argc, char* argv[])
 						SendPacketRaw(4, packPlayerMoving(&data), 56, 0, peer, ENET_PACKET_FLAG_RELIABLE);
 					}
 					else if (str == "/help"){
-						GamePacket p = packetEnd(appendString(appendString(createPacket(), "OnConsoleMessage"), "Supported commands are: /help, /mod, /unmod, /inventory, /item id, /team id, /color number, /who, /state number, /count, /sb message, /alt, /radio"));
+						GamePacket p = packetEnd(appendString(appendString(createPacket(), "OnConsoleMessage"), "Supported commands are: /help, /mod, /unmod, /inventory, /item id, /team id, /color number, /who, /state number, /count, /sb message, /alt, /radio, /gem"));
 						ENetPacket * packet = enet_packet_create(p.data,
 							p.len,
 							ENET_PACKET_FLAG_RELIABLE);
