@@ -1,4 +1,7 @@
 # Growtopia Server
+
+### WARNING: Deprecated. This fork of GrowtopiaServer will be no longer maintained, has much outdated code inside. Please head over to the [main repository here](https://github.com/GrowtopiaNoobs/GrowtopiaServer).
+
 First Growtopia Private Server made with ENet.
 Forked and edited to support other compilers and platforms.
 
